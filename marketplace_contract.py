@@ -17,3 +17,5 @@ class Product:
         sold = Bytes("SOLD")
     # subclass app methods deines methods available for the product
     class AppMethods:
+        # allows a user to buy a product
+        buy = Bytes("buy")
