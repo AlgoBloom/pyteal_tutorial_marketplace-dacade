@@ -19,3 +19,10 @@ class Product:
     class AppMethods:
         # allows a user to buy a product
         buy = Bytes("buy")
+    # add function for creating the application which is the product in this case
+    def application_creation(self):
+        # this function returns a sequence
+        return Seq([
+            # asserts the application has five arguments
+            Assert(Txn.application_args.length() == Int(4)),
+        ])
