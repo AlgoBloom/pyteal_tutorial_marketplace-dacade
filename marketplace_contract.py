@@ -25,4 +25,6 @@ class Product:
         return Seq([
             # asserts the application has five arguments
             Assert(Txn.application_args.length() == Int(4)),
+            # asserts that the application has a specific note attached to it
+            Assert(Txn.note() == Bytes("tutorial-markeplace:uv1")),
         ])
