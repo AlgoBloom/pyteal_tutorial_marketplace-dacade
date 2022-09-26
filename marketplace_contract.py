@@ -37,4 +37,6 @@ class Product:
             App.globalPut(self.Variable.description, Txn.application_args[2]),
             # puts the price variable into the fourth application argument for the transaction
             App.globalPut(self.Variable.price, Txn.application_args[3]),
+            # puts the sold variable into the fifth application argument for the transaction
+            App.globalPut(self.Variable.sold, Txn.application_args[4]),
         ])
