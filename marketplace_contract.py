@@ -29,4 +29,6 @@ class Product:
             Assert(Txn.note() == Bytes("tutorial-markeplace:uv1")),
             # asserts that the price is greater than zero
             Assert(Btoi(Txn.application_args[3]) > Int(0)),
+            # puts the name variable into the first application argument for the transaction
+            App.globalPut(self.Variable.name, Txn.application_args[0]),
         ])
