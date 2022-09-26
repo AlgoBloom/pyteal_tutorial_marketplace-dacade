@@ -27,4 +27,6 @@ class Product:
             Assert(Txn.application_args.length() == Int(4)),
             # asserts that the application has a specific note attached to it
             Assert(Txn.note() == Bytes("tutorial-markeplace:uv1")),
+            # asserts that the price is greater than zero
+            Assert(Btoi(Txn.application_args[3]) > Int(0)),
         ])
