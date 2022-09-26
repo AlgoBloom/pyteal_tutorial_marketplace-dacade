@@ -33,4 +33,6 @@ class Product:
             App.globalPut(self.Variable.name, Txn.application_args[0]),
             # puts the image variable into the second application argument for the transaction
             App.globalPut(self.Variable.image, Txn.application_args[1]),
+            # puts the description variable into the third application argument for the transaction
+            App.globalPut(self.Variable.description, Txn.application_args[2]),
         ])
