@@ -31,4 +31,6 @@ class Product:
             Assert(Btoi(Txn.application_args[3]) > Int(0)),
             # puts the name variable into the first application argument for the transaction
             App.globalPut(self.Variable.name, Txn.application_args[0]),
+            # puts the image variable into the second application argument for the transaction
+            App.globalPut(self.Variable.image, Txn.application_args[1]),
         ])
