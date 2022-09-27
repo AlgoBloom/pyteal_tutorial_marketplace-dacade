@@ -23,6 +23,7 @@ class Product:
     def application_creation(self):
         # this function returns a sequence
         return Seq([
+            # assertions have to be true for the global puts to execute
             # asserts the application has five arguments
             Assert(Txn.application_args.length() == Int(4)),
             # asserts that the application has a specific note attached to it
@@ -39,4 +40,13 @@ class Product:
             App.globalPut(self.Variable.price, Btoi(Txn.application_args[3])),
             # puts the sold variable into the fifth application argument for the transaction
             App.globalPut(self.Variable.sold, Int(0)),
+            # approve leaves a one at the top of the stack
+            Approve()
         ])
+
+    # adding a method which is a handler for buying a product
+    # a handler is a callback routine which operates asynch when an event takes place
+    def buy(self):
+        # there are two application arguments
+        count = Txn.application_args[1]
+        
