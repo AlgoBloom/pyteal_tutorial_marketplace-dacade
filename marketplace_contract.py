@@ -47,7 +47,7 @@ class Product:
     # adding a method which is a handler for buying a product
     # a handler is a callback routine which operates asynch when an event takes place
     def buy(self):
-        # there are two application arguments
+        # count is the number of products being purchases
         count = Txn.application_args[1]
         # the number of transaction in the group must be exactly two
         valid_number_of_transactions = Global.group_size() == Int(2)
@@ -58,4 +58,6 @@ class Product:
             Gtxn[1].type_enum() == TxnType.Payment,
             # the receiver of the payment should be the creator of the smart contract for the product
             Gtxn[1].receiver() == Global.creator_address(),
+            # the total payment should be the cost of the product times the number being purchased
+            Gtxn[1].amount() == App.globalGet(self.Variable.price) * Btoi(count),
         )
