@@ -51,3 +51,9 @@ class Product:
         count = Txn.application_args[1]
         # the number of transaction in the group must be exactly two
         valid_number_of_transactions = Global.group_size() == Int(2)
+
+        # performs validity checks
+        valid_payment_to_seller = And(
+            # the second transaction in the group must be the payment transaction
+            Gtxn[1].type_enum() == TxnType.Payment,
+        )
