@@ -60,4 +60,6 @@ class Product:
             Gtxn[1].receiver() == Global.creator_address(),
             # the total payment should be the cost of the product times the number being purchased
             Gtxn[1].amount() == App.globalGet(self.Variable.price) * Btoi(count),
+            # makes sure that the sender of the transaction matches the address making the smart contract call
+            Gtxn[1].sender() == Gtxn[0].sender(),
         )
