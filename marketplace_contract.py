@@ -71,7 +71,7 @@ class Product:
         # update state defines a sequence which updates the smart contract state if all checks succeed
         upstate_state = Seq(
             # the sold variable is updated by adding the integer value of sold
-            App.globalPut(self.Variables.sold, App.globalGet(self.Variables.sold) + Btoi(count))
+            App.globalPut(self.Variables.sold, App.globalGet(self.Variables.sold) + Btoi(count)),
             # approve leaves a one on the execution stack
             Approve()
         )
