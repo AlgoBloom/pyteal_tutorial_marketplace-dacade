@@ -1,4 +1,5 @@
 from pydoc import describe
+from turtle import update
 from pyteal import *
 
 # we create a product class in order to make this code reuseable
@@ -69,9 +70,12 @@ class Product:
                       valid_payment_to_seller)
 
         # update state defines a sequence which updates the smart contract state if all checks succeed
-        upstate_state = Seq(
+        upstate_state = Seq([
             # the sold variable is updated by adding the integer value of sold
             App.globalPut(self.Variables.sold, App.globalGet(self.Variables.sold) + Btoi(count)),
             # approve leaves a one on the execution stack
             Approve()
-        )
+        ])
+
+        # updates the state if can buy evaluates to true, else rejects the method
+        return If(can_buy).Then(upstate_state).Else(Reject())
