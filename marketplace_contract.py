@@ -56,4 +56,6 @@ class Product:
         valid_payment_to_seller = And(
             # the second transaction in the group must be the payment transaction
             Gtxn[1].type_enum() == TxnType.Payment,
+            # the receiver of the payment should be the creator of the smart contract for the product
+            Gtxn[1].receiver() == Global.creator_address(),
         )
