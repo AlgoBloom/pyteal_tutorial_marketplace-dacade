@@ -67,3 +67,11 @@ class Product:
         # can buy must evaluate to true to allow the purchase to completed
         can_buy = And(valid_number_of_transactions,
                       valid_payment_to_seller)
+
+        # update state defines a sequence which updates the smart contract state if all checks succeed
+        upstate_state = Seq(
+            # the sold variable is updated by adding the integer value of sold
+            App.globalPut(self.Variables.sold, App.globalGet(self.Variables.sold) + Btoi(count))
+            # approve leaves a one on the execution stack
+            Approve()
+        )
