@@ -49,4 +49,5 @@ class Product:
     def buy(self):
         # there are two application arguments
         count = Txn.application_args[1]
-        
+        # the number of transaction in the group must be exactly two
+        valid_number_of_transactions = Global.group_size() == Int(2)
