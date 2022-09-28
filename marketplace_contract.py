@@ -63,3 +63,7 @@ class Product:
             # makes sure that the sender of the transaction matches the address making the smart contract call
             Gtxn[1].sender() == Gtxn[0].sender(),
         )
+
+        # can buy must evaluate to true to allow the purchase to completed
+        can_buy = And(valid_number_of_transactions,
+                      valid_payment_to_seller)
