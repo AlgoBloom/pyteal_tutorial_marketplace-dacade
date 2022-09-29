@@ -85,3 +85,4 @@ class Product:
         # check to be sure that the sender of the transaction is the creator of the application
         return Return(Txn.sender() == Global.creator_address())
 
+    def application_start(sefl):
