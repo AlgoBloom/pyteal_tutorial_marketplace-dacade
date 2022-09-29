@@ -79,3 +79,9 @@ class Product:
 
         # updates the state if can buy evaluates to true, else rejects the method
         return If(can_buy).Then(upstate_state).Else(Reject())
+
+    # method for deleting a product
+    def application_deletion(self):
+        # check to be sure that the sender of the transaction is the creator of the application
+        return Return(Txn.sender() == Global.creator_address())
+
