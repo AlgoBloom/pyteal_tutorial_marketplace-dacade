@@ -85,4 +85,9 @@ class Product:
         # check to be sure that the sender of the transaction is the creator of the application
         return Return(Txn.sender() == Global.creator_address())
 
-    def application_start(sefl):
+    # to start the application we define a conditional statement
+    def application_start(self):
+        # conditional allows for different types of calls to the smart contract
+        return Cond(
+            
+        )
