@@ -89,5 +89,6 @@ class Product:
     def application_start(self):
         # conditional allows for different types of calls to the smart contract
         return Cond(
-            
+            # first condition checks if the application id matches 0, this means the application does not exist yet and needs to be created, therefore application_creation method is called
+            [Txn.application_id() == Int(0), self.application_creation()],
         )
