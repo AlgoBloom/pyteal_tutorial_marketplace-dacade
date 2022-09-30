@@ -103,3 +103,8 @@ class Product:
     def approval_program(self):
         # returns the application start method
         return self.application_start()
+    
+    # need the clear function to remove the smart contract from the deployer's balance record
+    def clear_program(self):
+        # returns a one on the stack
+        return Return(Int(1))
