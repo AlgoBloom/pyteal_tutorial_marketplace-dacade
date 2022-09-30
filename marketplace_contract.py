@@ -88,9 +88,13 @@ class Product:
     # to start the application we define a conditional statement
     def application_start(self):
         # conditional allows for different types of calls to the smart contract
+        # the first one that is true will return its callback function
+        # if none are true the method will reject
         return Cond(
             # first condition checks if the application id matches 0, this means the application does not exist yet and needs to be created, therefore application_creation method is called
             [Txn.application_id() == Int(0), self.application_creation()],
             # second if the on complete action of the transaction is delete application, then the application delete method is called
             [Txn.on_completion() == OnComplete.DeleteApplication, self.application_deletion()],
+            # third condition checks if the first argument of the transaction is buy, then calls the buy method
+            [Txn.application_args[0] == self.AppMethods.buy, self.buy()]
         )
