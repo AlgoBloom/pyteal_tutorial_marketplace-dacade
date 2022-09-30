@@ -13,3 +13,5 @@ if __name__ == "__main__":
 
     # we define compiled approval to be a subroutine that uses the function compile teal program, this calls te approval program subroutine, defines the mode as application, and sets the version to six
     compiled_approval = compileTeal(approval_program, Mode.Application, version=6)
+    # the compiled approval is printed
+    print(compiled_approval)
