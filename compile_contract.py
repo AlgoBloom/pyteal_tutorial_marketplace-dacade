@@ -17,3 +17,7 @@ if __name__ == "__main__":
     print(compiled_approval)
     # a file called marketplace_tutorial.teal is created with write permissions and we write the compiled approval ro this file, then close the file
     with open("marketplace_approval.teal", "W") as teal:
+        # write the compiled approval object to the marketplace approval teal file
+        teal.write(compiled_approval)
+        # close the teal file
+        teal.close()
