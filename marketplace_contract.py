@@ -91,4 +91,6 @@ class Product:
         return Cond(
             # first condition checks if the application id matches 0, this means the application does not exist yet and needs to be created, therefore application_creation method is called
             [Txn.application_id() == Int(0), self.application_creation()],
+            # second if the on complete action of the transaction is delete application, then the application delete method is called
+            [Txn.on_completion() == OnComplete.DeleteApplication, self.application_deletion()],
         )
