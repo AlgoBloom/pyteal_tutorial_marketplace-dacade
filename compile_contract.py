@@ -10,3 +10,6 @@ if __name__ == "__main__":
     approval_program = Product().approval_program()
     # defininf our clear program
     clear_program = Product().clear_program()
+
+    # we define compiled approval to be a subroutine that uses the function compile teal program, this calls te approval program subroutine, defines the mode as application, and sets the version to six
+    compiled_approval = compileTeal(approval_program, Mode.Application, version=6)
