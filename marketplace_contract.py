@@ -1,5 +1,3 @@
-from pydoc import describe
-from turtle import update
 from pyteal import *
 
 # we create a product class in order to make this code reuseable
