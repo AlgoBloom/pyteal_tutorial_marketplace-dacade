@@ -98,3 +98,8 @@ class Product:
             # third condition checks if the first argument of the transaction is buy, then calls the buy method
             [Txn.application_args[0] == self.AppMethods.buy, self.buy()]
         )
+
+    # need the approval program which is one of two programs required for the smart contract, this one holds all application logic except for the clear program
+    def approval_program(self):
+        # returns the application start method
+        return self.application_start()
