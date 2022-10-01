@@ -1,4 +1,5 @@
 # here we import the entire pyteal library
+from turtle import clear
 from pyteal import *
 
 # importing the Product class from the marketplace contract
@@ -20,4 +21,15 @@ if __name__ == "__main__":
         # write the compiled approval object to the marketplace approval teal file
         teal.write(compiled_approval)
         # close the teal file
+        teal.close()
+
+    # a teal file called marketplace clear is created 
+    compiled_clear = compileTeal(clear_program, Mode.Application, version=6)
+    # added a print statement to print the compiled clear object
+    print(compiled_clear)
+    # added a marketplace clear teal file that is created 
+    with open("marketplace_clear.teal", "W") as teal:
+        # wrties the compiled clear object to the teal file
+        teal.write(compiled_clear)
+        # close the file
         teal.close()
